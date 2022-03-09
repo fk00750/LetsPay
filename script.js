@@ -113,10 +113,11 @@ const createUserNames = function (accs) {
 
 const createPassword = function (accs) {
   accs.forEach((acc) => {
-    const pin = acc.pin;
-    const today = new Date().getDate() + new Date().getHours();
-    const logIn_passwd = today * pin;
-    acc.password = logIn_passwd;
+    // const pin = acc.pin;
+    // const today = new Date().getDate() + new Date().getHours();
+    // const logIn_passwd = today * pin;
+    // acc.password = logIn_passwd;
+    acc.password = 1111;
     // console.log(acc);
   });
 };
@@ -181,18 +182,24 @@ btnLogOut.addEventListener("click", function (e) {
   console.log("---logOut---");
 
   // find index of logging out account
-  const index = accounts.findIndex((acc) => {
-    acc.username === currentAccount.username;
-  });
+  // let index = accounts.indexOf((acc) => {
+  //   acc.username === currentAccount.username;
+  // });
+
+  const index = accounts.findIndex(acc => acc.username === currentAccount.username)
+
+  let finduser = accounts.find(acc => acc.username === currentAccount.username)
 
   console.log(index);
+  console.log(finduser);
 
   accounts.splice(index, 1);
-  console.log(accounts);
+  console.log(currentAccount.username);
 
   // containerApp.parentNode.appendChild(containerApp);
   appendLog();
   containerApp.style.opacity = 0;
+  console.log(accounts);
 });
 
 // ! Transfering money
